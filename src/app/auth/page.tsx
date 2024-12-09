@@ -6,7 +6,6 @@ import useAuthentication from '@/hooks/useAuthentication'
 import { useRouter } from 'next/navigation'
 import { useEffect } from 'react'
 import dynamic from 'next/dynamic'
-import { toast } from 'sonner'
 
 // Dynamically import AuthForm with no SSR
 const AuthForm = dynamic(() => import('@/app/auth/AuthForm'), {
@@ -46,6 +45,7 @@ export default function AuthPage() {
     <div className="flex min-h-screen">
       <Quote />
       <AuthForm />
+      {/* <a href="/api/auth/login">Login</a> */}
     </div>
   )
 }

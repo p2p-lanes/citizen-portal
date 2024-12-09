@@ -4,6 +4,7 @@ import { GeistSans } from 'geist/font/sans';
 import GoogleAnalytics from "@/components/utils/GoogleAnalytics";
 import { Toaster } from "sonner";
 import icon from '../../public/EdgeCityIcon.png'
+import { UserProvider } from '@auth0/nextjs-auth0/client';
 
 export const metadata: Metadata = {
   title: "Resident Portal",
@@ -16,13 +17,15 @@ export const metadata: Metadata = {
 export default function RootLayout({children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en">
-      <body suppressHydrationWarning>
-        <GoogleAnalytics />
-        <Toaster />
-        <div className={`${GeistSans.className} antialiased w-[100%]`}>
-          {children}
-        </div>
-      </body>
+      <UserProvider>
+        <body suppressHydrationWarning>
+          <GoogleAnalytics />
+          <Toaster />
+          <div className={`${GeistSans.className} antialiased w-[100%]`}>
+            {children}
+          </div>
+        </body>
+      </UserProvider>
     </html>
   );
 }
